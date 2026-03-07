@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Document Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1337ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .document-card:hover {
+            transform: translateY(-2px);
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- Top Nav Bar -->
+<header class="flex h-16 items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 z-20">
+<div class="flex items-center gap-8">
+<!-- Logo -->
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl font-bold">description</span>
+<h1 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">DocEditor</h1>
+</div>
+</div>
+<!-- Center Search Bar -->
+<div class="flex flex-1 max-w-2xl px-8">
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="block w-full rounded-lg border-none bg-slate-100 dark:bg-slate-800 py-2 pl-10 pr-3 text-sm placeholder-slate-500 focus:ring-2 focus:ring-primary dark:text-white" placeholder="Search documents, folders, or people..." type="text"/>
+</div>
+</div>
+<!-- Right Side Cluster -->
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-lg p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="h-9 w-9 overflow-hidden rounded-full bg-slate-200" data-alt="User profile avatar circle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJkaZJuZX_FDwECOUUc7J6bfe3a15v0KPE_PVa4T163RoduL6AhKaRVM_QLdZWeIaVz3VCvMyefGCgzAwCAba6Q1Wm_N_EfYRrU1pVvimOKDQnU_4L37BpOYDWrJaLWG31XualHmVwPTUauOOoUtWFboyngTLG9LPFcpdAWMhSYnaaZqpjPDHR6OsY1VLBu9OJk5Xm5MSVnHQ33BuVEVpcb12pefIaAPnNa5T9xURipvOIwkB-IVbrwwjFUoTwOP7RfpqeujL3xi8')"></div>
+<span class="text-sm font-semibold hidden md:block">Alex Rivers</span>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-y-auto hidden md:flex flex-col">
+<div class="p-6 flex flex-col gap-1">
+<p class="px-3 mb-2 text-xs font-bold uppercase tracking-wider text-slate-400">Workspace</p>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-primary bg-primary/10" href="#">
+<span class="material-symbols-outlined text-[20px]">folder_open</span>
+                    All Documents
+                </a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+                    Recent
+                </a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+                    Shared with me
+                </a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">star</span>
+                    Starred
+                </a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+                    Trash
+                </a>
+</div>
+<div class="mt-auto p-6 border-t border-slate-200 dark:border-slate-800">
+<div class="rounded-xl bg-primary/5 p-4 border border-primary/10">
+<p class="text-xs font-bold text-primary mb-1 uppercase tracking-tighter">Pro Plan</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3 leading-relaxed">Unlock unlimited collaborators and storage.</p>
+<button class="w-full rounded-lg bg-primary py-2 text-xs font-bold text-white hover:bg-primary/90 transition-colors">Upgrade Now</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark scroll-smooth">
+<div class="mx-auto max-w-7xl px-8 py-10">
+<!-- Welcome & Action Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white mb-2">Welcome back, Alex</h2>
+<p class="text-slate-500 dark:text-slate-400 font-medium">You have <span class="text-primary font-bold">12 documents</span> in your workspace.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 rounded-lg bg-slate-100 dark:bg-slate-800 px-4 py-2.5 text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                            Create Document
+                        </button>
+</div>
+</div>
+<!-- Section Divider -->
+<div class="flex items-center gap-4 mb-6">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-400">Recent Documents</h3>
+<div class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<!-- Document Grid -->
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+<!-- Card 1 -->
+<div class="document-card group flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
+<span class="material-symbols-outlined">article</span>
+</div>
+<button class="text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<h4 class="mb-1 text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Q4 Marketing Strategy</h4>
+<p class="mb-6 text-xs text-slate-500 font-medium">Modified 2 hours ago</p>
+<div class="mt-auto flex items-center justify-between border-t border-slate-50 dark:border-slate-800 pt-4">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-100" data-alt="Small owner profile thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB-DKycBC80TblX1x7X1oPwVILDWFhItz1JY5AAIqoZ4mGV6AgwpOZ_QL7RslJDh_ezQBfhKty09jgVL4Mwu1TZ1sp5emHs4BmRhtorQXg009W5OY4Zq7wGbCsERv0YNamJUp7h3MMNtE4pts1GWM4kakyDbqsxXcARYPAvrsS9VEOIxZ5RytIWbANAhL2F1sDwFutdYWt0XMTCPmXm7AIm2MI83SaOHGxXEnlMz-l5ILEsU0c7e_L0pqNP19VJgUywI2PH5-chnXo')"></div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-400">You</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-300" title="Private">lock</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="document-card group flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined">table_view</span>
+</div>
+<button class="text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<h4 class="mb-1 text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Project Alpha Roadmap</h4>
+<p class="mb-6 text-xs text-slate-500 font-medium">Modified 5 hours ago</p>
+<div class="mt-auto flex items-center justify-between border-t border-slate-50 dark:border-slate-800 pt-4">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-100" data-alt="Small owner profile thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA-VvFSjAR71QC6-QuKjgxHabGq0d3RVuJe42x9F2ugCc5qU9RiIouoUQ1lSdxRWkZirek3-G66pWyelj-p9bKUmR9HEM8AGU7IVq0rRIpAIcBcw0c4QIgwVw6isOEbMCdSQNcb5kETdDjoggbE6Qr4P104-LTREUJZQQmlusIPf72ncMLpmgtHolFH9ADuJzmJDQFJx31dtbRMDMO5GR3fnlMxJOB-YMlaIDnxwUIE-TqZ9eyFcDBVQytEWcFHC0KusCmMLTUT4vs')"></div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-400">Sarah K.</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary" title="Shared with team">group</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="document-card group flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<button class="text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<h4 class="mb-1 text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Ideation Brainstorming</h4>
+<p class="mb-6 text-xs text-slate-500 font-medium">Modified Yesterday</p>
+<div class="mt-auto flex items-center justify-between border-t border-slate-50 dark:border-slate-800 pt-4">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-100" data-alt="Small owner profile thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCiotFzjAVqO34HDiXgO9xHSU_sAqakAEyK0A29dfbVMhtdq4jDrQ5WQh1xpqRYsRmYR2XnqVjQTcmxR12EsiKu-p4LmZYufS-fP6NogrzRalV_jKWpFTKt93Awxz3TnN0AdGldbYosp8mBS4F_eBYIaKiPtvdUE5YzwT90cEpFAeKiQuEsgplLpXjOVzVluIeS3U16goKHJdskj5I5Nb-msl7yAT3wtFVGqOFbLlEoUtq04_tADjn-jojVa0eoSaIwgf-9C22y1Yk')"></div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-400">You</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-yellow-500 fill-1">star</span>
+<span class="material-symbols-outlined text-[18px] text-primary" title="Shared">group</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="document-card group flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+<span class="material-symbols-outlined">edit_note</span>
+</div>
+<button class="text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<h4 class="mb-1 text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Customer Feedback V2</h4>
+<p class="mb-6 text-xs text-slate-500 font-medium">Modified 3 days ago</p>
+<div class="mt-auto flex items-center justify-between border-t border-slate-50 dark:border-slate-800 pt-4">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-100" data-alt="Small owner profile thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuATdnEifvxhx4tdt8btZPAdOCcApBAeiCgRGZlE7_p-4zI-oqwmWfqRRNN1XyKS4wZ5bYwGIs-fHFHDMdUxpkt2IhDsXDS1HlGxgKQj9q6DSO-wAhf6eH7O66vgLAaKXTFspXc9ktEY5hu7SMwffUAyrFLCTgyM27rllfOv-lqtYeNX6rxZXrnASS0mE70irgxI5DqH4mRGuJeMcUecrUMrj7H1QX4k6tzFz99qSeFotuk2EhqT5BaARQ7hk37N_qxfRNCTRw50RHQ')"></div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-400">James T.</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary" title="Shared">group</span>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="document-card group flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">attachment</span>
+</div>
+<button class="text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<h4 class="mb-1 text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Onboarding Checklist</h4>
+<p class="mb-6 text-xs text-slate-500 font-medium">Modified Aug 24</p>
+<div class="mt-auto flex items-center justify-between border-t border-slate-50 dark:border-slate-800 pt-4">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-100" data-alt="Small owner profile thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA-gYjCzU5tZIj-cGQWHcmgNmPZGteCWJLFuOpx7Q7R6Ix9hZ6klp-g-fPhp2Wx5itldR2i7Y-HvnX3SQC56TjjMm6qPZKDRDV3BLvsIMdcIcm3COR0Q2ncdO7aXOCPKBH4l3mBBKy2EfZk--wkim6E9DW9sgxW72Up6frpEsROKCbrIwJsJX_QBNYZXs2PCHwI-80DgikRdnI1SDq0_Dap0FTtv3I2x5U323coqKuuxxvGTnQDRfJL3FmAKnyeq38y-7j3YcJQDjw')"></div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-400">You</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-300">lock</span>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="document-card group flex flex-col rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex items-center justify-between mb-4">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400">
+<span class="material-symbols-outlined">assignment</span>
+</div>
+<button class="text-slate-400 hover:text-slate-600">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<h4 class="mb-1 text-base font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Security Guidelines</h4>
+<p class="mb-6 text-xs text-slate-500 font-medium">Modified Aug 20</p>
+<div class="mt-auto flex items-center justify-between border-t border-slate-50 dark:border-slate-800 pt-4">
+<div class="flex items-center gap-2">
+<div class="h-6 w-6 rounded-full bg-slate-100" data-alt="Small owner profile thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjmg1IBtrDvYMJVd4fqkk7gb0EkUtvQf1R82K3snl1Q86Nm1Xq5jo3WPAraUMMz_8FP3MrnL1dni3CJQ6MBGd6ObRYwY8pk5JqyJZl2IZKtwdSDoNdD5LLxlDfQ_AuxbcRnaToUzRKV1KPvd7_KtvV9TPQi_huS3uWpU3KotNPT4E93GA1rGMgrFlD8rc2b570M-theNOMeFy2TiealME8DhMvwW8Dat29yQ-fhrqQx-q_n_elUqmGFX-Sheqox7KyDed9SZJxj74')"></div>
+<span class="text-xs font-bold text-slate-600 dark:text-slate-400">Admin</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary" title="Shared">group</span>
+</div>
+</div>
+<!-- Create New Card (Ghost Style) -->
+<div class="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-800 bg-transparent p-5 hover:border-primary hover:bg-primary/5 transition-all cursor-pointer group min-h-[180px]">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 group-hover:bg-primary group-hover:text-white transition-all mb-3">
+<span class="material-symbols-outlined">add</span>
+</div>
+<p class="text-sm font-bold text-slate-600 dark:text-slate-400 group-hover:text-primary">New Document</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

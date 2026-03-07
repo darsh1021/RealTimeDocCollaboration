@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Version History - Collaborative Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1337ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 40px;
+            bottom: -20px;
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+        .timeline-item:last-child .timeline-line::before {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-2 sticky top-0 z-50">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-3xl">description</span>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold tracking-tight">DocCraft</h2>
+</div>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-700 mx-2"></div>
+<div class="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+<span>Product Roadmap 2024</span>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex -space-x-2">
+<img alt="Sarah Miller" class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900" data-alt="Avatar of Sarah Miller" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV48xGGcwfA3Yfcq-6XKaSsxwP2Ro4jl3JVUgmC3Nfrm9DAZZQypbH3moooiOlTHSsz1lDOE02R7bLAJ-LYMuNmiT003jH2JBSzQLx_vANCz3BI-8NO1FrD4poP2HyfwrAjl-49z4dpDxQ8xcHWB08-VgoVc1eZU6YLGuvA55HyYuogbqJMn1_PdCRJX3xH8rJZ_j_IV2EXVXAVdLby4dypHUD_9xylSJN8Zi_DfCiMS-jIedLBucmKKxc4r1MPaoGu8OxF0814ec"/>
+<img alt="Alex Chen" class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900" data-alt="Avatar of Alex Chen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIY0VwmeqvXKwkPUn5tH2cvqGoxhHoygsYluyuNcKZOLPNYFyhUPmveoGbmWkWobG1j0rl-pL2zGd3ZjPapKHcZIgRGTUgvluxYrHsPfH5y8vIFF8OJ721O2eUfgLqqg07SGVSX9vwXEYDbB17fB5xiK56fS4-pWeNq8hNPrbiH9ycpb_x79SSxGJipOF8Uti9OvXpf6yRAf2wc25Qh1YIVBi4f3SkhWFNloF_iWUObRQDAlxDYeZNkSY5kiEVPHs8KrGwiuA28_E"/>
+<div class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[10px] font-bold">+2</div>
+</div>
+<button class="flex items-center justify-center rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold transition-all hover:bg-primary/90">
+                Share
+            </button>
+<div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700" data-alt="Current user profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDtL_3VXY8FWbrKz_1F7K9nbkgt1l5u3--7BYXGoQm2v_a5oL53k9388yFqNdfgoj6BpvqwvGI-BoUw-is_QXlBp8dz86sXWq7Y_hbk66yrDSdp7rgxaztUIwJ5ACSSdhY3Ay-U9c7-MLMEVIIt8tpdDXDOTC9067b8h4UuHpsowgkQ8Q6d1G6Nv1pvc_CZBPJZUMeCKu13pKVu47lfWTpor34O8YA-CD5hJz7d7dNQcFBvWrsjgkytzjpe3hX_9g32G5Cx3wXPJrI'); background-size: cover;"></div>
+</div>
+</header>
+<main class="flex h-[calc(100vh-53px)] overflow-hidden relative">
+<!-- Main Editor Workspace (Dimmed Background) -->
+<div class="flex-1 bg-[#f8f9fa] dark:bg-slate-950 p-8 overflow-y-auto relative">
+<!-- Dimming Overlay -->
+<div class="absolute inset-0 bg-slate-900/5 dark:bg-black/40 z-10 pointer-events-none"></div>
+<div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 shadow-sm rounded-lg min-h-[1000px] p-16 relative">
+<div class="absolute top-4 right-4 bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded border border-primary/20">
+                    PREVIEWING VERSION: OCT 24, 2:15 PM
+                </div>
+<h1 class="text-4xl font-bold mb-8">Product Roadmap 2024</h1>
+<p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                    Our primary focus for the upcoming fiscal year is to stabilize the core collaborative infrastructure. 
+                    This includes major updates to the real-time syncing engine and a complete overhaul of the version control system.
+                </p>
+<h2 class="text-2xl font-semibold mb-4 mt-8">Key Objectives</h2>
+<ul class="list-disc pl-5 space-y-3 text-slate-600 dark:text-slate-400">
+<li>Reduce latency in document synchronization by 40% across all regions.</li>
+<li>Introduce advanced version history features, including visual diffing and named releases.</li>
+<li>Expand internationalization support to include 12 additional languages by Q3.</li>
+</ul>
+<div class="mt-12 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-dashed border-slate-300 dark:border-slate-700">
+<p class="italic text-slate-500">Drafting the next section for marketing alignment...</p>
+</div>
+</div>
+</div>
+<!-- Version History Sidebar Panel -->
+<aside class="w-[400px] border-l border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col z-20 shadow-2xl">
+<!-- Panel Header -->
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Version History</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Viewing last 30 days of changes</p>
+</div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-slate-400">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Version Timeline -->
+<div class="flex-1 overflow-y-auto p-4 space-y-2">
+<!-- Timeline Entry: Current -->
+<div class="timeline-item relative group border-2 border-primary/20 bg-primary/5 rounded-xl p-4 transition-all">
+<div class="timeline-line"></div>
+<div class="flex gap-4">
+<div class="relative z-10">
+<img alt="James Wilson" class="w-10 h-10 rounded-full" data-alt="Avatar of James Wilson" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYaSoILHjYD2oXJ_COqdXfsgtCeSCqSoviFDTUTBjwstgyKsfhmlDv_5C2ROoB8GzZ0Jjb7urc68CDyYXd2X4RvO9ypbvjS7nzxcJAVzfUwepbreu1VeZlLF_vdkRPQA_Go4SUnXC4f-LBk8XpkejXyjJJP59EtG3diblofrzIRWSJPWKrveqHOcqU4RgKXWzzjAeiZxrU9LMmpWuI46dt6Wqldu_qh_rHkOkhzbpMJeAfZpGsCFLF0brMabIIrhBvqyDkmlTbOzc"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-primary border-2 border-white dark:border-slate-900 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-white font-bold">check</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Current Version</span>
+<span class="text-[10px] uppercase font-bold text-primary tracking-wider">Active</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Today at 4:32 PM • Edited by you</p>
+<div class="flex gap-2">
+<button class="flex-1 h-8 rounded bg-primary/10 text-primary text-xs font-bold transition-all hover:bg-primary/20">
+                                    Create Copy
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Entry: Historical 1 -->
+<div class="timeline-item relative group hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl p-4 transition-all cursor-pointer">
+<div class="timeline-line"></div>
+<div class="flex gap-4">
+<div class="relative z-10">
+<img alt="Sarah Miller" class="w-10 h-10 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="Avatar of Sarah Miller" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn76UAm_wnk85OQnG-VYenXpswYikiPHg4zlipTryCR0ZMEs3UgvXuOQEbxTzw9J_9YOiMroVWHppq-d8lQqCpMoCDSXwrWf6SIkPKXpM4TibTI1BRwdFUrMe28qSDG-A-4t5rASRb-cjBJ2sdwZUM0QjQ1pnS2kpMEIkNnVa_sM8zq0-8603mAfmad7pobyn19K_ypKrPeHUlXOPqPUn6ISgAtTgnM-DzTK2v7vk6Mw6kCtE1CCGxdRHuASwuhEpuvyxNsf9gGEw"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Sarah Miller</span>
+<span class="text-[10px] text-slate-400 font-medium">2 hours ago</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3 italic">"Updated the key objectives for Q3 alignment."</p>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="flex-1 h-8 rounded bg-primary text-white text-xs font-bold shadow-sm hover:shadow-md">
+                                    Restore
+                                </button>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200">
+<span class="material-symbols-outlined text-sm">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Entry: Historical 2 -->
+<div class="timeline-item relative group hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl p-4 transition-all cursor-pointer">
+<div class="timeline-line"></div>
+<div class="flex gap-4">
+<div class="relative z-10">
+<div class="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold text-xs">
+                                AC
+                            </div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Alex Chen</span>
+<span class="text-[10px] text-slate-400 font-medium">5 hours ago</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Auto-saved draft</p>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="flex-1 h-8 rounded bg-primary text-white text-xs font-bold shadow-sm hover:shadow-md">
+                                    Restore
+                                </button>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200">
+<span class="material-symbols-outlined text-sm">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Entry: Named Version -->
+<div class="timeline-item relative group hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl p-4 transition-all cursor-pointer bg-slate-50/50 border border-slate-100 dark:border-slate-800">
+<div class="timeline-line"></div>
+<div class="flex gap-4">
+<div class="relative z-10">
+<div class="w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center text-amber-600 dark:text-amber-400">
+<span class="material-symbols-outlined">turned_in</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors italic">Final Review Draft</span>
+<span class="text-[10px] text-slate-400 font-medium">Yesterday</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Marked by Project Lead</p>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="flex-1 h-8 rounded bg-primary text-white text-xs font-bold shadow-sm hover:shadow-md">
+                                    Restore
+                                </button>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200">
+<span class="material-symbols-outlined text-sm">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Entry: Older -->
+<div class="timeline-item relative group hover:bg-slate-50 dark:hover:bg-slate-800/50 rounded-xl p-4 transition-all cursor-pointer">
+<div class="timeline-line"></div>
+<div class="flex gap-4">
+<div class="relative z-10">
+<img alt="Ben Foster" class="w-10 h-10 rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="Avatar of Ben Foster" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVqB4wx__wOznp5RlogsYBk8RmmjW-KxZOZy07IlNotQiHHdi3Z3b_wncZkzz8wiWUSl3RVjJWk1bHmepcpDSQoBRzOig_HBrJMuOmRszoEr4E-aoXTOS4sSV_EVUfjZBbbApXL9L_1UCN83VDUYeISKx0H7Q51INiUtQCnIfjZh_njVEPjkKmgozeMMXlrQpzztyV6-HIrs_poJelRvXT-cVT5MKzjh18R19jNHJ3toxddOr-9yLjO7kHKFL27q0JZYlXeDcMRf0"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Ben Foster</span>
+<span class="text-[10px] text-slate-400 font-medium">Oct 23, 11:20 AM</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Initial document setup and template application.</p>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="flex-1 h-8 rounded bg-primary text-white text-xs font-bold shadow-sm hover:shadow-md">
+                                    Restore
+                                </button>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200">
+<span class="material-symbols-outlined text-sm">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Information -->
+<div class="p-4 bg-slate-50 dark:bg-slate-800/80 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">
+<span class="material-symbols-outlined text-xs">info</span>
+                    History Policy
+                </div>
+<p class="text-[11px] text-slate-500 dark:text-slate-400 leading-normal">
+                    Versions are automatically saved every few minutes of editing. Named versions are kept indefinitely.
+                </p>
+<button class="w-full mt-4 h-9 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 text-xs font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                    Save Named Version
+                </button>
+</div>
+</aside>
+<!-- Floating Action Tooltip (Mock) -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl border border-slate-700">
+<span class="text-sm font-medium">Currently comparing versions...</span>
+<div class="w-px h-4 bg-slate-700 mx-2"></div>
+<button class="text-sm font-bold text-primary hover:underline">Exit Preview</button>
+</div>
+</main>
+</body></html>

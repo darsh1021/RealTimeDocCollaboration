@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Editor Interface - Product Requirements</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#1337ec",
+            "background-light": "#f6f6f8",
+            "background-dark": "#101322",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .editor-shadow {
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 10px -2px rgba(0, 0, 0, 0.03);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-between px-6 shrink-0 z-30">
+<div class="flex items-center gap-4 flex-1">
+<div class="flex items-center gap-2 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 p-1.5 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-primary text-[28px]">description</span>
+<h1 class="text-lg font-semibold tracking-tight outline-none focus:ring-2 focus:ring-primary/20 rounded px-1" contenteditable="true">Product Requirements</h1>
+</div>
+<div class="hidden lg:flex items-center gap-1 ml-4 text-slate-400">
+<span class="material-symbols-outlined text-sm">cloud_done</span>
+<span class="text-xs font-medium">Saved to Cloud</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<!-- Collaborators -->
+<div class="flex items-center -space-x-2">
+<div class="size-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200 overflow-hidden" title="Alex Johnson">
+<img alt="Avatar of a male team member" data-alt="Portrait of a smiling professional man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM1eqsNc7bgN1HoamoAvYYfA2cTRGOKJijAjlwU8yIbaFT6-xrKV40XiIwVuRPGNzAOi7TGB5njkRrePMmGiAPLqaU8roKNy_JqBZL4cc0oqDh3lYyoXEii0-SXR9Mfh4qU6OA6N_KE-3OYP99MyD4m5X1WxlC3bndR1ZLDqrhQD5b69fORkpZhHVIGvBeZL1JuFaveWUJ5e96fxC7JQn6Em_aMD0yZJSfNUzsfOpAhCeLzjRQfEebW4ajLfoHTmGWEMYJ2G3q_-c"/>
+</div>
+<div class="size-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200 overflow-hidden" title="Sarah Chen">
+<img alt="Avatar of a female team member" data-alt="Portrait of a smiling professional woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYEupYN0GU0cii6PHW2_WoJO1n1z8vl21c7tgsJwn2cXLEZep9_A3E0Dry5j2qPK-vJUuCv9slA6haMVbYd7bXT8ot97aoZR7G2xpvWoaq2qmTEsbJhbujEu8IksG2xmtskDr3l7Jw6rITE7YTxy1RqaD8p5FUTGVX6FBmN9YJxbNLNb4F3ebTZBTZ3DmD6omeebsLbzCk2e8zH5Hr27qEMZTXO-zwCorzmJOKx0PpHsZBF7tljHhhqqgkxnHHdBklSRjRyn2k_Mc"/>
+</div>
+<div class="size-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-200 overflow-hidden" title="Marcus Wright">
+<img alt="Avatar of a male developer" data-alt="Portrait of a man wearing glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2dVwOd4NbA5lsI4u7KtJeFigbnGbkflKX6AAE_loZ9Qt6Fd_zkjxisrHuISAw5BDuJDkmTHheYN0aDWVo1oiebtcljng17j3iWObK8ZJo2YPNt1dnED_emveMZkvcB9xr7moIyaUB5mODCisY4CGZVYRderWFc9pBAlcBqjG9_UOKVbGVRxFyHqh7Tse9lDUr6iNVo7kW3oU7STeejKJrzw1inT24T0KE-vRhnHvF5YidvxANiZLPECWvkylZRBxaTnrQ4XrA434"/>
+</div>
+<div class="size-8 rounded-full border-2 border-white dark:border-slate-900 bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary">
+          +2
+        </div>
+</div>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-800"></div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span class="text-sm font-medium hidden sm:inline">History</span>
+</button>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-bold text-sm tracking-wide transition-all shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">share</span>
+          Share
+        </button>
+<button class="size-9 rounded-full overflow-hidden border border-slate-200 dark:border-slate-700">
+<img alt="User profile photo" data-alt="Portrait of user profile thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPaFjbkGseMMgr_loiJNtla5atF4mH7WgSugRLNTXcY7FT-xB8ppRAsypSc1oh787rO-GpYUxsHrR62c5p-jZzdFsXKcbqYVEF3S2CQGuuP4jL5azxkD4MSC1dRf72OCIh4mJVP7_AcLtkNeQrA4e2n45kv5wG078CixtU00iUNC2E5WW0t5aEwMknRfnZXQRbUm66DTonx7MWXAodqPvfOo_QgoX1YYQF9h9lQGp644-uXGBRp4rzIXcLmeB8Ecohp3fsWTx-NoQ"/>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto scrollbar-hide flex flex-col items-center py-12 px-6 relative">
+<!-- Floating/Sticky Formatting Toolbar -->
+<div class="sticky top-0 w-full max-w-5xl z-20 mb-6">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl p-1.5 flex items-center justify-between">
+<div class="flex items-center gap-1">
+<!-- Text Style Select -->
+<button class="flex items-center gap-1 px-3 py-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300">
+            Normal text
+            <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-700 mx-1"></div>
+<!-- Formatting Buttons -->
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_bold</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_italic</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_underlined</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_strikethrough</span>
+</button>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-700 mx-1"></div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_list_numbered</span>
+</button>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-700 mx-1"></div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">add_photo_alternate</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">table_chart</span>
+</button>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-400 dark:text-slate-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-slate-400 dark:text-slate-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Document Canvas -->
+<div class="w-full max-w-5xl bg-white dark:bg-slate-900 rounded-xl editor-shadow min-h-[1200px] p-16 md:p-24 lg:p-32 border border-slate-100 dark:border-slate-800 relative group">
+<!-- Editor Content -->
+<article class="prose prose-slate dark:prose-invert max-w-none outline-none" contenteditable="true">
+<h1 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight">Product Requirements: Collaborative Editor V2</h1>
+<div class="flex items-center gap-3 mb-10 pb-10 border-b border-slate-100 dark:border-slate-800">
+<div class="flex -space-x-1.5">
+<div class="size-6 rounded-full ring-2 ring-white dark:ring-slate-900 overflow-hidden">
+<img alt="Avatar" data-alt="Small team member avatar icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWui8k3xEZtmXPhSGO7kBGj1M-qZ4Hs_4_IyMjkLf600Lyes5qMAJQ8X_T3Ue2rYrTQabAOJk_vjkRPPrWfyMEvySkAGp4hSyiYcEMFrwlJF7J-G4wqSROzm3qUKYGHxf-GISsv_2ln-El-cYqSuS0MLy8RmD_jtgGEtetWuJu3cZu6osxJ5PP1spAThoS31K1dh2t5qlgfLySmxs3Uh_6lnXPPb6DpXvCOWDI_EUhTYOpP8x4cEyyYY2zigN6ZbpFUk20hN1uLwQ"/>
+</div>
+<div class="size-6 rounded-full ring-2 ring-white dark:ring-slate-900 overflow-hidden">
+<img alt="Avatar" data-alt="Small team member avatar icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMwXUyIzXChG1BK2gmZScSL1oqLzS0WAAJBLindHXQztrOMfLL0r47YrWbtYCULmaeTuhcKVKnuZtO3UaHu6R3vwB-HTyTbGiAeEOve6aiEM3YgADL8j7g4KL9RotKdG0qu1YDeP30qcF9ddd2pXcZbP6jRG8_3oyG1WrFYgoJ6j7Om5g9WWxhp-8FbqI10muYyXER9KRkgvWg8VMfVB8PEKPgTSpRUDGJnEdTfXctglIN5_tX1bmc5j127yQ3YjNNsRw26Wr9jq4"/>
+</div>
+</div>
+<span class="text-xs text-slate-400 font-medium">Draft created by Alex J. • Last updated 2 mins ago</span>
+</div>
+<p class="text-lg leading-relaxed text-slate-600 dark:text-slate-400 mb-6">
+          This document outlines the core functional requirements for the new collaborative editor module. The primary goal is to provide a seamless, high-performance writing experience for distributed teams, focusing on ultra-low latency synchronization and rich media support.
+        </p>
+<h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 mt-12 mb-4">1. Core Objectives</h2>
+<ul class="space-y-3 text-slate-600 dark:text-slate-400 list-disc pl-5">
+<li><strong>Real-time Presence:</strong> Users should see where others are typing via colored cursors and name labels.</li>
+<li><strong>Offline Support:</strong> Enable editing without an active connection, syncing changes automatically once back online.</li>
+<li><strong>Version History:</strong> Snapshot system to revert to any point in the document's history.</li>
+<li><strong>Extensible Formatting:</strong> Support for markdown shortcuts and custom block types.</li>
+</ul>
+<h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100 mt-12 mb-4">2. User Experience</h2>
+<p class="text-slate-600 dark:text-slate-400 mb-4">
+          The interface must remain distraction-free. We should follow a minimalist aesthetic where controls only appear when necessary. The "paper" metaphor should be preserved through subtle elevation and generous white space.
+        </p>
+<div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-lg">
+<p class="text-primary font-medium italic">
+            "We want our users to feel like they are writing on a high-quality physical notebook, but with the superpowers of digital collaboration."
+          </p>
+</div>
+<h3 class="text-xl font-semibold text-slate-800 dark:text-slate-100 mt-8 mb-3">Key Interaction Patterns</h3>
+<p class="text-slate-600 dark:text-slate-400">
+          - <strong>Slash Command:</strong> Pressing '/' opens a menu to insert blocks like tables, images, or code snippets.<br/>
+          - <strong>Hover Actions:</strong> Comments and reactions should appear in the right margin when hovering over paragraphs.
+        </p>
+<div class="mt-20 flex items-center gap-2">
+<span class="h-6 w-0.5 bg-primary animate-pulse"></span>
+<span class="text-slate-300 italic">Start typing...</span>
+</div>
+</article>
+<!-- Collaborative Cursor Mock -->
+<div class="absolute top-[420px] left-[180px] pointer-events-none group-hover:opacity-100 opacity-0 transition-opacity">
+<div class="h-6 w-0.5 bg-amber-500"></div>
+<div class="absolute -top-6 left-0 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm whitespace-nowrap">
+          Sarah Chen
+        </div>
+</div>
+</div>
+</main>
+<!-- Bottom Status Bar / Typing Indicators -->
+<footer class="h-10 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 flex items-center justify-between shrink-0 z-30">
+<div class="flex items-center gap-4 text-[11px] font-medium text-slate-400 uppercase tracking-widest">
+<div class="flex items-center gap-1.5">
+<span class="size-2 rounded-full bg-emerald-500"></span>
+        Online
+      </div>
+<div class="h-3 w-px bg-slate-200 dark:bg-slate-800"></div>
+<div>1,248 Words</div>
+<div class="h-3 w-px bg-slate-200 dark:bg-slate-800"></div>
+<div>UTF-8 Encoding</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+<div class="flex -space-x-1">
+<div class="size-4 rounded-full border border-white dark:border-slate-900 bg-slate-200 overflow-hidden">
+<img alt="Avatar" data-alt="Small avatar of Marcus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbLEKXXkb6nafvQE3lHlijZk07jEDOmNuS2Xzr7VqJfkTWoM17i38-WcOJvF_evoduvgblvTvd7XrNQEMJ4LtVZSX2MCh2h8UVNRNN8IKZd-ECtzSkkpzcxWHqtOkadjaI-rlmwVyCoIt1EaejnvCcQioKCcHyPDP9dAK2kbq2ObBo4H1JpScZs5OfCz5eOXEeD9aM5QAnX0o7AlcFsB0DJ67iwBzlj-Ky4JIeuujvqbr0vYNjdyHxdVTva2eSbajFrTBAhsfGPf4"/>
+</div>
+</div>
+<span class="animate-pulse">Marcus Wright is typing...</span>
+</div>
+<div class="flex items-center gap-1 text-slate-400 cursor-pointer hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">help_outline</span>
+</div>
+</div>
+</footer>
+</body></html>
