@@ -14,7 +14,7 @@ connectDB();
 // Middleware
 const allowedOrigins = [
     "http://localhost:5173",
-    "https://real-time-doc-collaboration-wp6vly2s4-darshas-projects-feb79bd7.vercel.app"
+    "https://real-time-doc-collaboration.vercel.app/"
 ];
 
 app.use(
